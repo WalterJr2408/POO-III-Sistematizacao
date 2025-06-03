@@ -43,7 +43,7 @@ public class AdocaoController {
         if (!imagemFile.isEmpty()) {
             try {
                 // Defina a pasta onde a imagem será armazenada.
-                // Para desenvolvimento, podemos salvar em src/main/resources/static/img
+                // Para desenvolvimento, podemos salvar em uploaded-files/img
                 String uploadDir = "uploaded-files/img/";
                 Path uploadPath = Paths.get(uploadDir);
                 if (!Files.exists(uploadPath)) {

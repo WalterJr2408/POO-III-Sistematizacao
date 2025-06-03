@@ -45,9 +45,18 @@
 		  <textarea class="form-control" th:field="*{descricao}" rows="3"></textarea>
 		</div>
 		<div class="mb-3">
-		  <label class="form-label">Imagem</label>
-		  <input type="file" class="form-control" name="imagem" accept="image/png, image/jpeg" required/>
+			<label class="form-label">Imagem</label>
+		  	<div th:if="${adocao.id == null}">
+		  		<input type="file" class="form-control" name="imagem" accept="image/png, image/jpeg" required/>
+			</div>
+			<div th:if="${adocao.id != null}">
+				<input type="file" class="form-control" name="imagem" accept="image/png, image/jpeg"/>
+				<small class="form-text text-muted">Deixe em branco se não quiser alterar a imagem.</small>
+		        <!-- Campo oculto para manter o valor já existente -->
+		        <input type="hidden" th:field="*{imagemUrl}" />
+			</div>
 		</div>
+
 		<button class="btn btn-success">Salvar</button>
 		<a th:href="@{/adocoes}" class="btn btn-secondary">Cancelar</a>
 	</form>
