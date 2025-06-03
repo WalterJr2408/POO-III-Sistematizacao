@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Formulário Adoção</title>
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body class="p-4">
+  <div class="container">
+  	<h2 th:text="${adocao.id} != null ? 'Editar' : 'Nova'">Formulário</h2>
+    <form th:action="@{/adocoes/salvar}" th:object="${adocao}" method="post">
+    	<input type="hidden" th:field="*{id}"/>
+  		<div class="mb-3">
+        	<label class="form-label">Nome</label>
+        	<input class="form-control" th:field="*{nome}" required/>
+      	</div>
+      	<div class="mb-3">
+	        <label class="form-label">Tipo</label>
+			<select class="form-select" th:field="*{tipo}">
+	        	<option value="Cão">Cão</option>
+		        <option value="Gato">Gato</option>
+				<option value="Pássaro">Pássaro</option>
+				<option value="Peixe">Peixe</option>
+				<option value="Roedor">Roedor</option>
+				<option value="Réptil">Réptil</option>
+				<option value="Outro">Outro</option>
+	        </select>
+		</div>
+      	<div class="mb-3">
+	        <label class="form-label">Idade</label>
+	        <input type="number" class="form-control" th:field="*{idade}" required/>
+      	</div>
+		<div class="mb-3">
+		  <label class="form-label">Raça</label>
+		  <input class="form-control" th:field="*{raca}" required/>
+		</div>
+		<div class="mb-3">
+		  <label class="form-label">Status</label>
+		  <select class="form-select" th:field="*{statusAdocao}">
+		    <option value="Disponível">Disponível</option>
+            <option value="Em processo">Em processo</option>			
+		    <option value="Adotado">Adotado</option>
+		  </select>
+		</div>
+		<div class="mb-3">
+		  <label class="form-label">Descrição</label>
+		  <textarea class="form-control" th:field="*{descricao}" rows="3"></textarea>
+		</div>
+		<div class="mb-3">
+		  <label class="form-label">URL da Imagem</label>
+		  <input type="url" class="form-control" th:field="*{imagemUrl}" required/>
+		</div>
+		<button class="btn btn-success">Salvar</button>
+		<a th:href="@{/adocoes}" class="btn btn-secondary">Cancelar</a>
+	</form>
+  </div>
+  <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

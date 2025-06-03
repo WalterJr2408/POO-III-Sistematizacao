@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>PetAdota ‒ Adoções</title>
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body class="p-4">
+  <div class="container">
+    <h1>Animais para Adoção</h1>
+    <a class="btn btn-primary mb-3" th:href="@{/adocoes/novo}">Novo</a>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Foto</th><th>Nome</th><th>Tipo</th><th>Idade</th>
+          <th>Raça</th><th>Status</th><th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="a : ${lista}">
+          <td>
+            <img th:src="${a.imagemUrl}"
+                 class="img-thumbnail"
+                 style="max-height: 80px" alt="foto"/>
+          </td>
+          <td th:text="${a.nome}">Nome</td>
+          <td th:text="${a.tipo}">Tipo</td>
+          <td th:text="${a.idade}">Idade</td>
+          <td th:text="${a.raca}">Raça</td>
+          <td th:text="${a.statusAdocao}">Status</td>
+          <td>
+            <a th:href="@{|/adocoes/editar/${a.id}|}"
+               class="btn btn-sm btn-warning">Editar</a>
+            <a th:href="@{|/adocoes/deletar/${a.id}|}"
+               class="btn btn-sm btn-danger"
+               onclick="return confirm('Confirma?');">Excluir</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
