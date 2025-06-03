@@ -6,7 +6,7 @@
 <body class="p-4">
   <div class="container">
   	<h2 th:text="${adocao.id} != null ? 'Editar' : 'Nova'">Formulário</h2>
-    <form th:action="@{/adocoes/salvar}" th:object="${adocao}" method="post">
+    <form th:action="@{/adocoes/salvar}" th:object="${adocao}" method="post" enctype="multipart/form-data">
     	<input type="hidden" th:field="*{id}"/>
   		<div class="mb-3">
         	<label class="form-label">Nome</label>
@@ -45,8 +45,8 @@
 		  <textarea class="form-control" th:field="*{descricao}" rows="3"></textarea>
 		</div>
 		<div class="mb-3">
-		  <label class="form-label">URL da Imagem</label>
-		  <input type="url" class="form-control" th:field="*{imagemUrl}" required/>
+		  <label class="form-label">Imagem</label>
+		  <input type="file" class="form-control" name="imagem" accept="image/png, image/jpeg" required/>
 		</div>
 		<button class="btn btn-success">Salvar</button>
 		<a th:href="@{/adocoes}" class="btn btn-secondary">Cancelar</a>
