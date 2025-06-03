@@ -1,0 +1,37 @@
+{
+	"folders": {},
+	"connections": {
+		"derby_server-19732c5b2af-6c481e7485bc8448": {
+			"provider": "generic",
+			"driver": "derby_server",
+			"name": "PetAdota",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "1527",
+				"database": "petadota",
+				"url": "jdbc:derby://localhost:1527/petadota;create\u003dfalse",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Desenvolvimento",
+			"color": "255,255,255",
+			"description": "Banco de dados de desenvolvimento",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": true,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800,
+			"auto-close-connections": true,
+			"close-connections-period": 14400
+		}
+	}
+}
