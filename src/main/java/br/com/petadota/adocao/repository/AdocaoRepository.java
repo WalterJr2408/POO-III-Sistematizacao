@@ -6,6 +6,5 @@ import br.com.petadota.adocao.model.Adocao;
 
 
 @Repository
-public interface AdocaoRepository extends JpaRepository<Adocao, Long>
-	{
+public interface AdocaoRepository extends JpaRepository<Adocao, Integer>	{
 	}
