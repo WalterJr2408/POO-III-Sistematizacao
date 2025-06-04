@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -50,8 +51,17 @@ public class AdocaoController {
                     Files.createDirectories(uploadPath);
                 }
 
-                // Limpa e gera um nome único para o arquivo
-                String fileName = System.currentTimeMillis() + "_" + a.getNome().strip() + ".jpg"; // Supondo que a imagem seja JPG
+                // Extrai o nome original e a extensão
+                String originalFilename = imagemFile.getOriginalFilename();
+                String extension = StringUtils.getFilenameExtension(originalFilename);
+                if (extension == null) {
+					extension = ".jpg"; // Se não houver extensão, define como vazio
+				} else {
+					extension = "." + extension.toLowerCase(); // Adiciona o ponto antes da extensão
+				}                
+
+                // Gera um nome único para o arquivo com a mesma extensão
+                String fileName = System.currentTimeMillis() + "_" + a.getNome().strip() + extension;
 
                 // Copia o arquivo para o diretório destino
                 try (InputStream inputStream = imagemFile.getInputStream()) {
