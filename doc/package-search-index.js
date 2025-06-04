@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"br.com.petadota.adocao"},{"l":"br.com.petadota.adocao.controller"},{"l":"br.com.petadota.adocao.model"},{"l":"br.com.petadota.adocao.repository"},{"l":"br.com.petadota.adocao.service"}];updateSearchResults();

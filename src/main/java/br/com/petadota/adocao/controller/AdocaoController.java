@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.*;
 
-
 @Controller
+
 @RequestMapping("/adocoes")
 public class AdocaoController {
     private final AdocaoService service;
