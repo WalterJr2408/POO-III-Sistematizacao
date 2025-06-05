@@ -31,7 +31,7 @@ public class AdocaoController {
         return "adocoes";
     }*/
     @GetMapping
-    public String listar(@RequestParam(value = "idBusca", required = false) Integer idBusca, Model m) {
+    public String listar(@RequestParam(value ="idBusca", required = false) Integer idBusca, Model m) {
         if (idBusca != null) {
             var opt = service.buscarPorId(idBusca);
             if (opt.isPresent()) {
