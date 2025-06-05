@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.util.StringUtils;
+import java.util.List;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,11 +25,27 @@ public class AdocaoController {
     }
 
     // 1) LISTAGEM
-    @GetMapping
+    /*@GetMapping
     public String listar(Model m) {
         m.addAttribute("lista", service.listarTodas());
         return "adocoes";
+    }*/
+    @GetMapping
+    public String listar(@RequestParam(value = "idBusca", required = false) Integer idBusca, Model m) {
+        if (idBusca != null) {
+            var opt = service.buscarPorId(idBusca);
+            if (opt.isPresent()) {
+                m.addAttribute("lista", List.of(opt.get()));
+            } else {
+                m.addAttribute("lista", List.of());
+                m.addAttribute("mensagemErro", "ID não encontrado.");
+            }
+        } else {
+            m.addAttribute("lista", service.listarTodas());
+        }
+        return "adocoes";
     }
+    
 
     // 2) FORMULÁRIO PARA NOVA
     @GetMapping("/novo")

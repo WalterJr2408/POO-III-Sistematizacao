@@ -9,10 +9,18 @@
   <div class="container">
     <h1>Animais para Adoção</h1>
     <a class="btn btn-primary mb-3" th:href="@{/adocoes/novo}">Novo</a>
+    <form class="d-inline-block ms-2" th:action="@{/adocoes}" method="get" style="vertical-align: top;">
+		<div class="input-group">
+    		<input type="number" class="form-control" name="idBusca" placeholder="ID do animal" min="1" required>
+    		<button class="btn btn-info" type="submit">Pesquisa por ID</button>
+    		<a th:if="${mensagemErro} or ${param.idBusca}" th:href="@{/adocoes}" class="btn btn-secondary">Voltar</a>
+  		</div>
+ 	</form>
+    <div th:if="${mensagemErro}" class="alert alert-danger" th:text="${mensagemErro}"></div>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Foto</th><th>Nome</th><th>Tipo</th><th>Idade</th>
+          <th>Foto</th><th>ID</th><th>Nome</th><th>Tipo</th><th>Idade</th>
           <th>Raça</th><th>Status</th><th>Ações</th>
         </tr>
       </thead>
@@ -23,6 +31,7 @@
                  class="img-thumbnail"
                  style="max-height: 80px" alt="foto"/>
           </td>
+          <td th:text="${a.id}">ID</td>
           <td th:text="${a.nome}">Nome</td>
           <td th:text="${a.tipo}">Tipo</td>
           <td th:text="${a.idade}">Idade</td>
